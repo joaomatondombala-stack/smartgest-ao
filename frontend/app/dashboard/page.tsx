@@ -6,19 +6,41 @@ export default function Dashboard() {
 
   const [clientes, setClientes] = useState<any[]>([]);
 
-  useEffect(() => {
-    carregarClientes();
-  }, []);
+useEffect(() => {
+  const token = localStorage.getItem("token");
 
-  async function carregarClientes() {
-    try {
-      const response = await fetch("http://localhost:3000/customer");
-      const data = await response.json();
-      setClientes(data);
-    } catch (error) {
-      console.error(error);
-    }
+  if (!token) {
+    window.location.href = "/";
+    return;
   }
+
+  carregarClientes();
+}, []);
+
+ async function carregarClientes() {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://localhost:3000/customer", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+
+    console.log("Resposta da API:", data);
+
+    if (Array.isArray(data)) {
+      setClientes(data);
+    } else {
+      console.error("A API não devolveu um array:", data);
+      setClientes([]);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
 
   return (
     <div className="flex min-h-screen">
@@ -36,6 +58,15 @@ export default function Dashboard() {
           <p>📄 Faturas</p>
           <p>📊 Relatórios</p>
           <p>⚙️ Configurações</p>
+          <button
+  className="mt-8 w-full rounded-lg bg-red-600 p-3"
+  onClick={() => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  }}
+>
+  🚪 Terminar sessão
+</button>
         </nav>
       </aside>
 

@@ -41,22 +41,39 @@ var react_1 = require("react");
 function Dashboard() {
     var _a = react_1.useState([]), clientes = _a[0], setClientes = _a[1];
     react_1.useEffect(function () {
+        var token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "/";
+            return;
+        }
         carregarClientes();
     }, []);
     function carregarClientes() {
         return __awaiter(this, void 0, void 0, function () {
-            var response, data, error_1;
+            var token, response, data, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, fetch("http://localhost:3000/customer")];
+                        token = localStorage.getItem("token");
+                        return [4 /*yield*/, fetch("http://localhost:3000/customer", {
+                                headers: {
+                                    Authorization: "Bearer " + token
+                                }
+                            })];
                     case 1:
                         response = _a.sent();
                         return [4 /*yield*/, response.json()];
                     case 2:
                         data = _a.sent();
-                        setClientes(data);
+                        console.log("Resposta da API:", data);
+                        if (Array.isArray(data)) {
+                            setClientes(data);
+                        }
+                        else {
+                            console.error("A API não devolveu um array:", data);
+                            setClientes([]);
+                        }
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _a.sent();
@@ -77,7 +94,11 @@ function Dashboard() {
                 React.createElement("p", null, "\uD83D\uDED2 Vendas"),
                 React.createElement("p", null, "\uD83D\uDCC4 Faturas"),
                 React.createElement("p", null, "\uD83D\uDCCA Relat\u00F3rios"),
-                React.createElement("p", null, "\u2699\uFE0F Configura\u00E7\u00F5es"))),
+                React.createElement("p", null, "\u2699\uFE0F Configura\u00E7\u00F5es"),
+                React.createElement("button", { className: "mt-8 w-full rounded-lg bg-red-600 p-3", onClick: function () {
+                        localStorage.removeItem("token");
+                        window.location.href = "/";
+                    } }, "\uD83D\uDEAA Terminar sess\u00E3o"))),
         React.createElement("main", { className: "flex-1 bg-gray-100 p-8" },
             React.createElement("h2", { className: "text-3xl font-bold" }, "Bem-vindo ao SmartGest AO"),
             React.createElement("div", { className: "grid grid-cols-4 gap-6 mt-8" },
