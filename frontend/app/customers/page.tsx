@@ -57,7 +57,7 @@ export default function Customers() {
   return (
     <main className="min-h-screen bg-gray-100 p-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Clientes</h1>
+        <h1 className="text-3xl font-bold text-black">Clientes</h1>
 
         <Link href="/customers/new">
           <button className="bg-blue-700 text-white px-5 py-3 rounded-lg hover:bg-blue-800 transition">

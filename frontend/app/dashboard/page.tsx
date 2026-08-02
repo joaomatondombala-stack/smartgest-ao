@@ -70,7 +70,7 @@ useEffect(() => {
         </nav>
       </aside>
 
-      <main className="flex-1 bg-gray-100 p-8">
+      <main className="flex-1 bg-gray-100 p-8 text-black">
         <h2 className="text-3xl font-bold">
           Bem-vindo ao SmartGest AO
         </h2>

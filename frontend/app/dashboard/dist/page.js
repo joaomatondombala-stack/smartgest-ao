@@ -99,7 +99,7 @@ function Dashboard() {
                         localStorage.removeItem("token");
                         window.location.href = "/";
                     } }, "\uD83D\uDEAA Terminar sess\u00E3o"))),
-        React.createElement("main", { className: "flex-1 bg-gray-100 p-8" },
+        React.createElement("main", { className: "flex-1 bg-gray-100 p-8 text-black" },
             React.createElement("h2", { className: "text-3xl font-bold" }, "Bem-vindo ao SmartGest AO"),
             React.createElement("div", { className: "grid grid-cols-4 gap-6 mt-8" },
                 React.createElement("div", { className: "bg-white rounded-xl shadow p-6 text-black" },

@@ -101,7 +101,7 @@ function Customers() {
     }
     return (React.createElement("main", { className: "min-h-screen bg-gray-100 p-8" },
         React.createElement("div", { className: "flex justify-between items-center mb-6" },
-            React.createElement("h1", { className: "text-3xl font-bold" }, "Clientes"),
+            React.createElement("h1", { className: "text-3xl font-bold text-black" }, "Clientes"),
             React.createElement(link_1["default"], { href: "/customers/new" },
                 React.createElement("button", { className: "bg-blue-700 text-white px-5 py-3 rounded-lg hover:bg-blue-800 transition" }, "+ Novo Cliente"))),
         erro && (React.createElement("div", { className: "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" }, erro)),
