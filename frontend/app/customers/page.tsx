@@ -20,7 +20,7 @@ export default function Customers() {
       const token = localStorage.getItem("token");
 
       // 2. Fazer a requisição enviando o token no Header
-      const response = await fetch("http://localhost:3000/customer", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customer`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`, // Passa o token para o JwtAuthGuard do NestJS
@@ -123,7 +123,7 @@ export default function Customers() {
   }, []);
 
   async function carregarClientes() {
-    const response = await fetch("http://localhost:3000/customer");
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customer`);
     const data = await response.json();
     setClientes(data);
   }

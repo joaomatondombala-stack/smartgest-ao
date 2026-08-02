@@ -56,7 +56,7 @@ function Dashboard() {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
                         token = localStorage.getItem("token");
-                        return [4 /*yield*/, fetch("http://localhost:3000/customer", {
+                        return [4 /*yield*/, fetch(process.env.NEXT_PUBLIC_API_URL + "/customer", {
                                 headers: {
                                     Authorization: "Bearer " + token
                                 }

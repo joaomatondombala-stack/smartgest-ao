@@ -31,7 +31,7 @@ export default function NovoCliente() {
       }
 
       // 2. Enviar a requisição POST com o Token de Autorização
-      const response = await fetch("http://localhost:3000/customer", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

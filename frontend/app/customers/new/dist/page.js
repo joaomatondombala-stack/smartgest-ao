@@ -66,7 +66,7 @@ function NovoCliente() {
                             setCarregando(false);
                             return [2 /*return*/];
                         }
-                        return [4 /*yield*/, fetch("http://localhost:3000/customer", {
+                        return [4 /*yield*/, fetch(process.env.NEXT_PUBLIC_API_URL + "/customer", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",

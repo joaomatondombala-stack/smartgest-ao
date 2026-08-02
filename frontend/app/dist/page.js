@@ -52,7 +52,7 @@ function Home() {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 4, , 5]);
-                    return [4 /*yield*/, fetch("http://localhost:3000/auth/login", {
+                    return [4 /*yield*/, fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/login", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"

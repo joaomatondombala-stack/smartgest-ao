@@ -56,7 +56,7 @@ function Customers() {
                         setCarregando(true);
                         setErro(null);
                         token = localStorage.getItem("token");
-                        return [4 /*yield*/, fetch("http://localhost:3000/customer", {
+                        return [4 /*yield*/, fetch(process.env.NEXT_PUBLIC_API_URL + "/customer", {
                                 headers: {
                                     "Content-Type": "application/json",
                                     "Authorization": "Bearer " + token
